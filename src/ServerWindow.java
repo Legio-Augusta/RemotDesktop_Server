@@ -16,27 +16,27 @@ public class ServerWindow extends ServerListener implements ActionListener{
 	
 	private Thread sThread; //server thread
 	
-	private static final int WINDOW_HEIGHT = 275;
-	private static final int WINDOW_WIDTH = 350;
+	private static final int WINDOW_HEIGHT = 285;
+	private static final int WINDOW_WIDTH = 360;
 	
 	private String ipAddress;
 	
-	private JFrame window = new JFrame("Remote Desktop Server");
+	private JFrame window = new JFrame(" Truy cap vao PC");
 	
 	private JLabel addressLabel = new JLabel("");
-	private JLabel portLabel = new JLabel("PORT: ");
-	private JLabel clientPortLabel = new JLabel("Outgoing PORT: ");
+	private JLabel portLabel = new JLabel("PORT SERVER: ");
+	private JLabel clientPortLabel = new JLabel("PORT CLIENT: ");
 	
 	private JTextArea[] buffers = new JTextArea[4];
 	private JTextField portTxt = new JTextField(5);
 	
 	private JTextField clientPortTxt = new JTextField(5);
 	private JTextField ipTxt = new JTextField(10);
-	private JLabel serverMessages = new JLabel("Not Connected");
+	private JLabel serverMessages = new JLabel("Chưa kết nối");
 	
-	private JButton connectButton = new JButton("Connect");
-	private JButton disconnectButton = new JButton("Disconnect");
-	private JButton shutdownButton = new JButton("Shutdown");
+	private JButton connectButton = new JButton("Kết-nối");
+	private JButton disconnectButton = new JButton("Ngắt");
+	private JButton shutdownButton = new JButton("Tắt máy");
 	
 	
 	public ServerWindow(){
@@ -57,10 +57,10 @@ public class ServerWindow extends ServerListener implements ActionListener{
 		try{
 			InetAddress ip = getIpAddress();
 			ipAddress = ip.getHostAddress();
-			addressLabel.setText("IP Address: ");
+			addressLabel.setText("IP máy Host: ");
 			ipTxt.setText(ipAddress);
 		}
-		catch(Exception e){addressLabel.setText("IP Address Could Not be Resolved, Try typing in the IP address.");}
+		catch(Exception e){addressLabel.setText("IP không hợp lệ, bạn hãy nhập lại ip.");}
 		
 		int x;
 		for(x = 0; x < 4; x++){
@@ -101,7 +101,7 @@ public class ServerWindow extends ServerListener implements ActionListener{
 			InetAddress ip = InetAddress.getByName(ipTxt.getText());
 			runServer(port, clientPort, ip);
 		}catch(UnknownHostException err){
-			serverMessages.setText("Error: Check that the ip you have entered is correct.");
+			serverMessages.setText("Error: Kiểm tra lại địa chỉ ip vừa nhập.");
 		}
 	}
 	
@@ -143,7 +143,7 @@ public class ServerWindow extends ServerListener implements ActionListener{
 					InetAddress ip = InetAddress.getByName(ipTxt.getText());
 					runServer(port, clientPort, ip);
 				}catch(UnknownHostException err){
-					serverMessages.setText("Error: Check that the ip you have entered is correct.");
+					serverMessages.setText("Error: Kiểm tra lại địa chỉ ip vừa nhập.");
 				}
 			}
 				
@@ -167,17 +167,17 @@ public class ServerWindow extends ServerListener implements ActionListener{
 			server.setIP(ip);
 			sThread = new Thread(server);
 			sThread.start();
-			serverMessages.setText("Waiting for connection on " + ip);
+			serverMessages.setText("Đang kết nối tới  " + ip);
 			connectButton.setEnabled(false);
 		}else{
-			serverMessages.setText("The port Number must be less than 65535");
+			serverMessages.setText("Cổng phải là một số nhỏ hơn 65535");
 			connectButton.setEnabled(true);
 		}
 	}
 	
 	public void closeServer(){
 		server.shutdown();
-		setMessage("Disconnected");
+		setMessage("Ngắt kết nối");
 	}
 	
 	public void setMessage(String msg){
@@ -192,6 +192,7 @@ public class ServerWindow extends ServerListener implements ActionListener{
 	    String shutdownCommand;
 	    String operatingSystem = System.getProperty("os.name");
 
+	    // Linux va osx cung nhan unix, co the shutdown bang 1 lenh chung.
 	    if ("Linux".equals(operatingSystem) || "Mac OS X".equals(operatingSystem)) {
 	        shutdownCommand = "shutdown -h now";
 	    }

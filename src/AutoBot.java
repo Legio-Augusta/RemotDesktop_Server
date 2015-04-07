@@ -1,7 +1,3 @@
-// 	Copyright 2010 Justin Taylor
-// 	This software can be distributed under the terms of the
-// 	GNU General Public License. 
-
 /*
  * TODO:
  * 		an AutoBot Listener class will need to be made to listen
@@ -63,14 +59,14 @@ public class AutoBot {
 		
 	public void moveMouse(int x, int y){
 		try{
-		//get the current position of the mouse cursor
+		//lay ra vi tri con tro chuot hien tai
 		int current_x_local = MouseInfo.getPointerInfo().getLocation().x;
 		int current_y_local = MouseInfo.getPointerInfo().getLocation().y;
 		
 		//move the mouse relative to the current position
 		robot.mouseMove(current_x_local + x, current_y_local + y);
 		}catch(NullPointerException e){
-			// Not sure why this exception occurs
+			// Chua ro tai sao loi khi di chuyen chuot
 			System.out.print("NUll pointer exception on mouse move");
 		}
 	}
@@ -213,7 +209,7 @@ public class AutoBot {
 	
 	public BufferedImage getScreenCap(int width, int height){
 		
-		// get the current location of the mouse
+		// lay ra vi tri hien thoi cua con tro chuot
 		// this is used to actually draw the mouse
 		Point mousePosition = MouseInfo.getPointerInfo().getLocation();
 				
@@ -222,7 +218,7 @@ public class AutoBot {
 		
 		Rectangle captureSize = new Rectangle(x, y, width, height);
 		BufferedImage img = robot.createScreenCapture(captureSize);
-		// start drawing the mouse onto the image;
+		// bat dau ve chuot len khung anh nen;
 		Polygon pointer = new Polygon(new int[]{0, -4, 4},new int[]{0, 8, 8}, 3);
 		
 	 	Graphics2D grfx = img.createGraphics();

@@ -4,15 +4,15 @@ import java.awt.Point;
 
 public class Constants {
 	
-	public static final char LEFTMOUSEDOWN = 'a';
-	public static final char LEFTMOUSEUP = 'b';
+	public static final char LEFTMOUSEDOWN = 'a';  // Nhap chuot trai
+	public static final char LEFTMOUSEUP = 'b';    // Tha chuot trai
 	
 	public static final char RIGHTMOUSEDOWN = 'c';
 	public static final char RIGHTMOUSEUP = 'd';
 	
-	public static final char LEFTCLICK = 'e';
+	public static final char LEFTCLICK = 'e';     // click chuot trai
 	
-	public static final char SCROLLUP = 'h';
+	public static final char SCROLLUP = 'h';      // cuon len
 	public static final char SCROLLDOWN = 'i';
 	
 	public static final char KEYBOARD = 'k';
@@ -20,7 +20,7 @@ public class Constants {
 	
 	public static final char DELIMITER = '/';
 	
-	public static final char MOVEMOUSE = 'p';
+	public static final char MOVEMOUSE = 'p';       // di chuyen chuot
 	
 	public static final char REQUESTIMAGE = 'I';
 	

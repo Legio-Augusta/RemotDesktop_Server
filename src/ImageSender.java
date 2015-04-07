@@ -108,7 +108,7 @@ public class ImageSender implements Runnable{
 	private BufferedImage scaleImage(BufferedImage image, int width, int height)
 	{
 		BufferedImage scaledImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-		// Paint scaled version of image to new image
+		// Ve lai anh da scale thanh anh moi
 		Graphics2D graphics2D = scaledImage.createGraphics();
 		
 		graphics2D.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
