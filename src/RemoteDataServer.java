@@ -62,11 +62,11 @@ public class RemoteDataServer implements Runnable{
 				connected = true;
 			}
 			catch(BindException e){
-				setListenerMessage("Port "+PORT+" is already in use. Use a different Port");
+				setListenerMessage("Port "+PORT+" đã dùng. Hãy chọn cổng khác");
 				setConnectButtonEnabled(false);
 			}
 			catch(Exception e){
-				setListenerMessage("Unable to connect");
+				setListenerMessage("Không thể kết nối");
 				setConnectButtonEnabled(false);
 			}
 			
@@ -80,18 +80,18 @@ public class RemoteDataServer implements Runnable{
 					message = new String(dgp.getData(), 0, dgp.getLength());
 					if (message.equals("Connectivity"))
 					{
-						setListenerMessage("Trying to Connect");
-						server.send(dgp); //echo the message back
+						setListenerMessage("Thử kết nối");
+						server.send(dgp); //gui lai thong diep
 					}
 					
 					else if(message.equals("Connected"))
 					{
-						server.send(dgp); //echo the message back
+						server.send(dgp); //gui thong diep phan hoi
 					}
 					
 					else if(message.equals("Close"))
 					{
-						setListenerMessage("Controller has Disconnected. Trying to reconnect."); //echo the message back
+						setListenerMessage("Mat dieu khien. Thu ket noi lai."); //gui phan hoi lai
 					}
 					
 					else if(message.charAt(0) == Constants.REQUESTIMAGE)
@@ -104,12 +104,12 @@ public class RemoteDataServer implements Runnable{
 					
 					else
 					{
-						setListenerMessage("Connected to Controller");
+						setListenerMessage("Ket noi duoc toi dieu khien");
 						bot.handleMessage(message);
 					}
 				}catch(Exception e){
 					System.out.println(e);
-					setListenerMessage("Disconnected");
+					setListenerMessage("Ngắt kết nối");
 					setConnectButtonEnabled(false);
 					connected = false;
 				}

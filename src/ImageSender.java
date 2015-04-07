@@ -31,7 +31,7 @@ public class ImageSender implements Runnable{
 			clientAddr = InetAddress.getByName(ip);
 		}
 		catch (Exception e){
-			System.out.print("Exception setting ip address");
+			System.out.print("Loi cau hinh dia chi ip");
 		}
 		
 		clientPort = port;
@@ -42,7 +42,7 @@ public class ImageSender implements Runnable{
 	           
 	       }
 	       catch (Exception e) {
-	           System.out.print("Could not bind to a port");
+	           System.out.print("Khong the ket noi toi cong.");
 	       }
 	}
 	
@@ -56,7 +56,7 @@ public class ImageSender implements Runnable{
 	           
 	       }
 	       catch (Exception e) {
-	           System.out.print("Could not bind to a port");
+	           System.out.print("Khong the ket noi toi cong");
 	       }
 	}
 	
@@ -80,7 +80,7 @@ public class ImageSender implements Runnable{
 		    
 		    int contentLength = tmp.size();
 		    float compress = 64000.0f/contentLength;
-		    System.out.println("Compress size "+compress);
+		    System.out.println("Size da nen "+compress);
 		    
 		    if(compress > 1.0) {
 		    	buffer = tmp;
@@ -108,7 +108,7 @@ public class ImageSender implements Runnable{
 	private BufferedImage scaleImage(BufferedImage image, int width, int height)
 	{
 		BufferedImage scaledImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-		// Ve lai anh da scale thanh anh moi
+		// Ve lai anh da scale tu anh goc
 		Graphics2D graphics2D = scaledImage.createGraphics();
 		
 		graphics2D.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
@@ -124,7 +124,7 @@ public class ImageSender implements Runnable{
 	private BufferedImage scaleImage(BufferedImage image, int width, int height, float scale)
 	{
 		BufferedImage scaledImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-		// Paint scaled version of image to new image
+		// Ve lai anh da scale tu anh goc
 		Graphics2D graphics2D = scaledImage.createGraphics();
 		AffineTransform xform = AffineTransform.getScaleInstance(scale, scale);
 		
@@ -142,14 +142,14 @@ public class ImageSender implements Runnable{
 	
 	/*
 	 * 
-	 * Compression
+	 * Nen anh khi truyen
 	 * 
 	 */
 	private ByteArrayOutputStream compressImage(BufferedImage image, float quality) throws IOException 
 	{
 		// Get a ImageWriter for jpeg format.
 		Iterator<ImageWriter> writers = ImageIO.getImageWritersBySuffix("jpeg");
-		if (!writers.hasNext()) throw new IllegalStateException("No writers found");
+		if (!writers.hasNext()) throw new IllegalStateException("Khong thay trinh ghi");
 		ImageWriter writer = (ImageWriter) writers.next();
 		
 		while(!writer.getDefaultWriteParam().canWriteCompressed() && writers.next() != null)

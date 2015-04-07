@@ -1,7 +1,5 @@
 /*
- * TODO:
- * 		an AutoBot Listener class will need to be made to listen
- * 		for events to send images back and forth
+ * 
  */
 
 import java.awt.*;
@@ -26,7 +24,7 @@ public class AutoBot {
 	
 	public AutoBot(){
 		try{ robot = new Robot(); }
-		catch(Exception e){ System.out.println("Couldn't Create robot");}
+		catch(Exception e){ System.out.println("Khong tao duoc robot");}
 	}
 	
 	public void handleMessage(String event){
@@ -63,10 +61,12 @@ public class AutoBot {
 		int current_x_local = MouseInfo.getPointerInfo().getLocation().x;
 		int current_y_local = MouseInfo.getPointerInfo().getLocation().y;
 		
-		//move the mouse relative to the current position
+		//di chuyen chuot 1 cach tuong doi toi vi tri hien tai
 		robot.mouseMove(current_x_local + x, current_y_local + y);
 		}catch(NullPointerException e){
 			// Chua ro tai sao loi khi di chuyen chuot
+			// Tren linux thi kha nang cao la chua open port, vi du 5444 phai 
+			// open port trong firewall
 			System.out.print("NUll pointer exception on mouse move");
 		}
 	}

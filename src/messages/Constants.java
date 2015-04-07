@@ -24,8 +24,11 @@ public class Constants {
 	
 	public static final char REQUESTIMAGE = 'I';
 	
+	public static final char BTN_NEXT = 't';    // nut next slide
+	public static final char BTN_BACK = 'w';	// nut back slide
+	
 	/*
-	 *  Returns a string in the format that can be laster parsed
+	 *  Tra ve mot chuoi de phan tich sau nay
 	 *  format: MOVEMOUSEintxDELIMITERinty
 	 *  ex: 	p5/6
 	 */
