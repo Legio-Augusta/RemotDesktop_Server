@@ -28,7 +28,7 @@ public class Constants {
 	public static final char BTN_BACK = 'w';	// nut back slide
 	
 	/*
-	 *  Tra ve mot chuoi de phan tich sau nay
+	 *  Tra ve mot chuoi de phan tich sau nay. Ma hoa toa do (x,y) chuot thanh 1 string.
 	 *  format: MOVEMOUSEintxDELIMITERinty
 	 *  ex: 	p5/6
 	 */
@@ -38,6 +38,7 @@ public class Constants {
 		return ""+MOVEMOUSE + intx + DELIMITER + inty;
 	}
 	
+	// Lay du lieu ve con tro chuot, tach toa do x,y tra ve Point
 	public static Point parseMoveMouseMessage(String message){
 		String[] tokens = message.substring(1).split(""+Constants.DELIMITER );
 		return new Point(Integer.parseInt(tokens[0]), Integer.parseInt(tokens[1]));

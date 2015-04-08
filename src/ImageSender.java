@@ -149,7 +149,7 @@ public class ImageSender implements Runnable{
 	{
 		// Get a ImageWriter for jpeg format.
 		Iterator<ImageWriter> writers = ImageIO.getImageWritersBySuffix("jpeg");
-		if (!writers.hasNext()) throw new IllegalStateException("Khong thay trinh ghi");
+		if (!writers.hasNext()) throw new IllegalStateException("Khong thay trinh ghi anh");
 		ImageWriter writer = (ImageWriter) writers.next();
 		
 		while(!writer.getDefaultWriteParam().canWriteCompressed() && writers.next() != null)
