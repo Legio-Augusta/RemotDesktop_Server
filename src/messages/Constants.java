@@ -24,8 +24,10 @@ public class Constants {
 	
 	public static final char REQUESTIMAGE = 'I';
 	
-	public static final char BTN_NEXT = 't';    // nut next slide
-	public static final char BTN_BACK = 'w';	// nut back slide
+	public static final char BTN_NEXT_DOWN = '>';    // nut next slide
+	public static final char BTN_NEXT_UP = 'z';    // nut next 
+	
+	public static final char BTN_BACK = '<';	// nut back slide
 	
 	/*
 	 *  Tra ve mot chuoi de phan tich sau nay. Ma hoa toa do (x,y) chuot thanh 1 string.

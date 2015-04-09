@@ -41,6 +41,11 @@ public class AutoBot {
 				
 				case Constants.MOVEMOUSE:   Point p = Constants.parseMoveMouseMessage(event);
 											moveMouse(p.x, p.y); break;
+											
+				case Constants.BTN_NEXT_DOWN: type(event.charAt(1)); break;
+				case Constants.BTN_NEXT_UP: type(event.charAt(1)); break;
+				
+				case Constants.BTN_BACK: type(event.charAt(1)); break;
 				
 				case Constants.KEYBOARD: type(event.charAt(1)); break;
 				case Constants.KEYCODE: specialKey(Integer.parseInt(event.substring(1))); break;
@@ -67,6 +72,7 @@ public class AutoBot {
 		}
 	}
 	
+	// Xu ly cac phim dac biet (cac phim khong in duoc ra man hinh)
 	public void specialKey(int key_code){
 		int key;
 		
@@ -83,6 +89,7 @@ public class AutoBot {
 		keyBoardPress(key);
 	}
 	
+	// Cac phim thong thuong (in duoc ra man hinh)
 	public void type(char character) {
         switch (character) {
         case 'a': keyBoardPress(KeyEvent.VK_A); break;
@@ -176,9 +183,15 @@ public class AutoBot {
         case '\'': keyBoardPress(KeyEvent.VK_QUOTE); break;
         case '"': keyBoardPress(KeyEvent.VK_QUOTEDBL); break;
         case ',': keyBoardPress(KeyEvent.VK_COMMA); break;
-        case '<': keyBoardPress(KeyEvent.VK_LESS); break;
+        
+//        case '<': keyBoardPress(KeyEvent.VK_LESS); break;
+        case '<': keyBoardPress(KeyEvent.VK_LEFT); break;   // Nut Next, left
+        
         case '.': keyBoardPress(KeyEvent.VK_PERIOD); break;
-        case '>': keyBoardPress(KeyEvent.VK_GREATER); break;
+        
+        case '>': keyBoardPress(KeyEvent.VK_RIGHT); break; // nut Back, right
+        //VK_GREATER
+        
         case '/': keyBoardPress(KeyEvent.VK_SLASH); break;
         case '?': keyBoardPress(KeyEvent.VK_SHIFT, KeyEvent.VK_SLASH); break;
         case ' ': keyBoardPress(KeyEvent.VK_SPACE); break;
